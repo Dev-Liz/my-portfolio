@@ -15,7 +15,7 @@ export function NavBar() {
   };
 
   return (
-    <header className="w-full sticky backdrop-blur-lg top-0 z-50 py-3 ">
+    <header className="w-full sticky backdrop-blur-lg top-0 z-50 py-1 ">
       <div className="container mx-auto p-4 relative">
         <div className="flex justify-between items-center">
           <Link href="/">
