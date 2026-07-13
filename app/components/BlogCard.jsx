@@ -3,7 +3,7 @@ import React from "react";
 
 export const BlogCard = ({ image, title, category, excerpt }) => {
   return (
-    <div className="w-full py-6 h-auto hover:scale-102">
+    <div className="w-full py-6 h-auto hover:shadow-md hover:scale-102 transition-all duration-300 ease-in-out">
       <Image
         src={image}
         width={600}
@@ -14,7 +14,10 @@ export const BlogCard = ({ image, title, category, excerpt }) => {
       <div className="flex flex-col space-y-4 py-4">
         <div className="flex justify-between items-center">
           <h5 className="text-heading5 font-kanit font-bold">{title}</h5>
-          <p className="flex items-center justify-center rounded-full py-1 px-2 bg-primary/20 font-kumbhsans">
+          <p
+            className="flex items-center justify-center rounded-full py-1 
+          px-2 bg-primary/20 font-kumbhsans text-sm"
+          >
             {category}
           </p>
         </div>

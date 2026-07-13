@@ -67,10 +67,10 @@ export const worksFilter = ["All", "React", "Astro", "Javascript"];
 export const projects = [
   {
     image: project1,
-    title: "News Homepage",
+    title: "Kyverno website and documentation",
     description:
-      "This is a landing page for a news blog This is a landing page for a news blog",
-    tools: ["React", " ", "Tailwind"],
+      "I redesigned the kyverno website and implementd with Astro and Javascript.jsv",
+    tools: ["Astro.js", " JavaScript", "Tailwind"],
   },
   {
     image: project1,

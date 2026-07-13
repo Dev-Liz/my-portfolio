@@ -2,7 +2,10 @@ import Image from "next/image";
 
 const ToolboxCard = ({ image, name, category }) => {
   return (
-    <div className="flex flex-col justify-center lg:flex-row lg:justify-start items-center gap-10 px-16 py-6 pb-10 border-b-1 border-cneutral-200">
+    <div
+      className="flex flex-col justify-center lg:flex-row lg:justify-start items-center gap-10 
+    px-16 py-6 pb-10 border-b-1 border-cneutral-200 opacity-70 hover:opacity-100"
+    >
       <Image
         src={image}
         alt={`${name} tool`}
