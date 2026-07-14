@@ -6,7 +6,7 @@ const FooterSection = () => {
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <p>©Elizabeth Bassey. All rights reserved</p>
-          <p>Last updated: October 2026</p>
+          <p>Last updated: July 2026</p>
         </div>
       </div>
     </section>

@@ -72,27 +72,6 @@ export const projects = [
       "I redesigned the kyverno website and implementd with Astro and Javascript.jsv",
     tools: ["Astro.js", " JavaScript", "Tailwind"],
   },
-  {
-    image: project1,
-    title: "Sunnyside Agency",
-    description:
-      "This is a landing page for a creative design studio This is a landing page for a creative design studio",
-    tools: ["React", " ", "Tailwind"],
-  },
-  {
-    image: project1,
-    title: "Manage Studio Landing page",
-    description:
-      "This is a landing page for a studio This is a landing page for a studio",
-    tools: ["React", " ", "Tailwind"],
-  },
-  {
-    image: project1,
-    title: "Room furnitures",
-    description:
-      "This is a landing page for a furniture business This is a landing page for a furniture business",
-    tools: ["React", " ", "Tailwind"],
-  },
 ];
 
 export const tools = [
@@ -163,14 +142,14 @@ export const socials = [
 
 export const experiences = [
   {
-    company: "Okto Finance",
-    role: "Documentation Engineer",
+    company: "Kyverno.io",
+    role: "Website/Documentation Engineer",
     year: "2025",
     image: disc,
   },
   {
-    company: "Smart Builders",
-    role: "Frontend Developer Intern",
+    company: "Neubird AI",
+    role: "Documentation Engineer",
     year: "2024",
     image: disc,
   },
