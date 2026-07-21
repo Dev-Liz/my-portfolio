@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Elizabeth Bassey's Frontend Portfolio
 
-## Getting Started
+_This portfolio is currently a work in progress_
 
-First, run the development server:
+A personal portfolio site designed to illustrate my frontend skills and projects. It features a personalized hero section, a work section that displays my projects, a tools section for the tools I use, an experience section, a blog section for my articles and a contact section to connect with me.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Portfolio hero](/public/portfolio-hero.jpg)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This is my first actual project with Next.js and javascript, with a markdown blog integrated. The interface is a minimalist ui designed (by me) to reflect a modern look and feel.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- Responsive layouts for all screen sizes.
+- Subtle animation for all interactive components.
+- MDX Blog
 
-To learn more about Next.js, take a look at the following resources:
+## Stack used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 16
+- React 19
+- Tailwind css4
+- Javascript
+- Framer motion
+- MDX
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+This project follows the next.js app route structure.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- app
+  - assets/ - page assets and images.
+  - components/ - reusable components for all sections.
+  - data/ - constant data for the website.
+  - posts[slug]/ - unique pages for all blog posts
+    - page.jsx
+  - sections/ - components for all page sections
+  - global.css - general page styles
+  - layout.js - Root layout
+  - page.js - Main layout
+  - posts/ - All blog posts in mdx files
+  - public/ - public files and images
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## View
+
+To view the project locally on your computer, please fork this repository to your own account then clone into your computer.
+
+To view the live page, please follow the link below.
+
+[Liz portfolio](https://lizbassey.vercel.app/)

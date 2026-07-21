@@ -1,0 +1,209 @@
+---
+title: Arcium - The First Parallelized Computing Network - A Deep-Dive
+excerpt: Let’s say you have some personal financial documents that you need to keep safe. At home, you store them in a fireproof lockable safe. Now you have to send them to your Accountant and you need to ensure that it’s not accessible by anyone except the authorized receiver.
+date: 2024-06-30
+author: "Elizabeth Bassey"
+image: "/article4/article4-cover.jpg"
+category: "Web 3"
+---
+
+# Arcium: The First Parallelized Computing Network - A Deep-Dive
+
+Let’s say you have some personal financial documents that you need to keep safe. At home, you store them in a fireproof lockable safe. Now you have to send them to your Accountant and you need to ensure that it’s not accessible by anyone except the authorized receiver. So you use a secure mailing service that ensures that the documents are tracked, insured, and requires a signature upon delivery.
+
+Your Accountant signs and receives them, only to tear them open so she can take a quick look while walking through the hallway, exposing the content of the document! That would be very unprofessional right?!🤔
+
+_stay with me_
+
+Data exists in 3 states, **at rest** (in data storage, databases, or data centers), **in transit** (while moving through a network), and **in use** (while processing). For years, service providers have offered encryption services to help secure data at rest and in transit, leaving the data vulnerable when in use.
+
+Confidential computing ensures that data is also protected when in use, making it secure at every stage of its lifecycle.
+
+This deep-dive explores **Arcium** - a Parallelized Confidential Computing Network, that aims to enable secure, decentralized, and collaborative data computation across various sectors. In subsequent sections, we'll be exploring Arcium's architecture, features, use cases, and its benefits for on-chain applications.
+
+**Let’s dive in.**
+
+## How Confidential Computing Really Works
+
+![Confidential computing illustration](/article4/article4-image1)
+
+_An illustration of confidential computing by_[_ledidi.com_](https://ledidi.com/blog/confidential-computing-the-missing-link-in-cloud-data-protection)
+
+Applications process data, and to do this, they interface with a computer’s memory. Before an application can process data, it has to be unencrypted; and because the data is unencrypted for a moment, it is left exposed.
+
+**Let’s break it down**
+
+Remember our analogy of your Accountant? She had to read the documents she received. And because she had to read them _(process)_, she unsealed them _(unencrypt)_ for a while, making the documents exposed. Again because she was in an open space, anyone could pry on that document right before she read them, while she was reading them, and after she must have read them.
+
+In the context of the data processed in a computer memory, the data is exposed to threats such as memory dump attack, Root user compromise, and other malicious exploits.
+
+_\- Memory dump attack is an attack that triggers an error log (known as memory dump) in a RAM storage, in other to expose the data in it._
+
+_\- Root user compromise: occurs when the wrong person gains access to admin privileges and can access data before, during, and after it has been processed (remember the prying eyes?)_
+
+**Confidential Computing** solves this problem by using a secured hardware-based architecture, known as **Trusted Execution Environment (TEE).**
+
+**TEE** is a secured area of a processor, embedded with encryption keys and an encryption attestation mechanism that ensures that it cannot be accessed by unauthorized codes _\[Think of it as an AI-sensor or a fingerprint lock on your safe which can only be accessed by you\]._
+
+This ensures that sensitive data remains in memory until the authorize application requests it to be decrypted for processing and while the data is being released for processing, it is invisible to the operatiing system or service provider.
+
+This approach to confidential computing ensured that the confidentiality and integrity of data were being protected from its immediate environment but was far from being the perfect solution. How? you may ask…
+
+- **Trusted Execution Environment though secured, are still vulnerable to attacks and being a centralized solution, can lead to massive loss of data.**
+- **It also has Scalability issues which means if too much data gets processed, the memory could be overloaded, causing latency.**
+- **User Trust: Being a centralized entity, this solution raised concerns over users' data.**
+
+## Introducing Arcium
+
+![introducing arcium banner](/article4/article4-image2)
+
+Arcium is a Parallelized Confidential Computing Network, that provides developers and applications with a trustless, variable, and efficient framework to run encrypted computation.
+
+_Okay, let’s break that down_
+
+### The Arcium Network Architecture
+
+![Arcium architecture](/article4/article4-image3)
+
+_An illustration of Arcium's architecture by_[_Arcium.com_](https://arcium.com/)
+
+Unlike traditional Confidential Computing solutions that rely on centralized hardware-based execution environments, Arcium Network leverages a decentralized architecture and cryptographic-based encryption to enable trustless, variable, and encrypted computation without the need to rely fully on hardware trustless parties.
+
+Remember our **Trusted Execution Environment** in traditional confidential computing? That was a single centralized solution used to secure processing data from its immediate environment.
+
+In modern architecture, Arcium uses decentralized Nodes (think of it as multiple interconnected TEEs, with more powerful features). Each node is called an Arx node, and is used as an individual computing service provider that contributes to collective computation processes.
+
+Depending on a Network User’s need, the nodes can be grouped into clusters which are then used to execute computations. That is, they can share computation results, allowing the network to derive a cryptographically final output, without any node having access to the complete data from others.
+
+The environment that enables the node cluster to jointly execute these computations is called a **Multi-party eXecution Environment (MXE).**
+
+**Multi-party eXecution Environment** defines a set of parameters for secure multi-party computations to be executed on the network.
+
+It allows Network Users (also known as **Computation Customers**) to define relevant parameters for their computation needs which includes:
+
+**Authority:** Who is allowed to initiate an execution of a given MXE?
+
+**Cluster:** What nodes are allowed & mandated to participate in executing this MXE?
+
+**Protocol:** What MPC protocol is to be used?
+
+**IO Scheme:** Where does the input data come from and where should the output data be written to?
+
+**Computation Definition:** What operations are allowed on the data and how are the operations defined?
+
+MXEs can be defined in two ways;
+
+**As persistent:** Meaning they can be reused indefinitely into the future.
+
+**As single User:** Which indicates that the MXE may only be used for one computation, and then automatically discarded.
+
+### Blockchain
+
+The Arcium Network uses programs running on the Solana Blockchain to manage and Orchestrate all aspects of the network’s state and services such as pending computations and participants' incentives.
+
+## Key Features of Arcium
+
+![Arcium features](/article4/article4-image4)
+
+With its decentralized and multi-cryptographic architecture, Arcium redefines how sensitive data is processed and shared in a trustless environment. Some of its key features include:
+
+### **Parallel Execution**
+
+Remember how the TEEs approach in traditional confidential computing used just one central processing environment? That means every computation had to wait in queue to be executed.
+
+Arcium's decentralized approach changes that. With multiple clusters of nodes working together, and with each having the ability to manage its own task, computations are done at the same time, making sure that the system can handle a lot of work right from the start. This means more task can be done at once, increasing speed and efficiency.
+
+### **Configurable Setups**
+
+**Arcium's Multi-party eXecution Environments** framework makes confidential computing even more powerful by enabling customization. Giving users the flexibility to specify what kind of data they want, how they want it, where and when they want it etc. This opens a wide range of possibilities for confidential data to be used across various industries.
+
+### **Composable Architecture**
+
+##### **Traditional confidential computing** is typically designed to work within a specific system or environment, often tied to particular hardware platforms.
+
+Arcium is both platform and blockchain independent. It provides flexibility and composability across different ecosystems, allowing even non-blockchain based developers to configure it to their platform needs.
+
+## Use Cases Of Arcium
+
+![Arcium use cases](/article4/article4-image5)
+
+Arcium's decentralized architecture with its MXE composability framework brings unique capabilities to confidential computing, creating numerous possibilities for various industries. Here are some use cases where Arcium can be applied:
+
+### Healthcare
+
+Hospitals and research institutions constantly analyze patient data for research while ensuring patient privacy.
+
+Arcium's MXE solution will enable secure processing of sensitive health data, allowing for collaborative research without compromising patient confidentiality.
+
+### **AI**
+
+Multiple organizations (e.g., hospitals and financial institutions) need to train a shared AI model using their proprietary data without revealing it to each other.
+
+Multi-party eXecution Environment (MXE) allows secure, privacy-preserving model training by enabling computations on encrypted data from different sources, ensuring that raw data remains confidential.
+
+### **DeFi**
+
+In managing and transferring assets across multiple blockchain networks without liquidity fragmentation, Arcium's chain-agnostic approach will allow seamless interoperability between different blockchains, ensuring efficient and secure asset management and transfers.
+
+### **DePIN**
+
+For DePin, the Arcium Network can be used to manage decentralized energy production and consumption in a smart grid. Its blockchain technology can securely track and manage energy transactions, while MXE ensures that sensitive usage data and grid management computations are protected.
+
+## Other Industries Arcium can be adopted
+
+### **Secure Voting Systems**
+
+Arcium Network can be used in voting systems to conduct secure and transparent elections. Its Blockchain technology feature will ensure the integrity and transparency of votes, while the MXE will ensures that voter data remains confidential.
+
+### **Intellectual Property Protection**
+
+The secure and decentralized nature of Arcium allows for the safe sharing and management of intellectual property. Creative industries could utilize these features to protect and securely share intellectual properties.
+
+## Real Estate
+
+Arcium can be applied in Real Estate Regulatory Compliance and Auditing, using its blockchain feature provides an immutable record of all transactions and actions, simplifying compliance and auditing processes. While Ensuring that all data processing complies with regulatory requirements, protecting sensitive information from breaches.
+
+## Future of Arcium
+
+![Future of Arcium](/article4/article4-image6)
+
+Launched in May 2024, Arcium has raised its first funding round of $9 million. Backed by major big names in the web3 ecosystem such as Coinbase, L2 Iterative Ventures, Staking Facilites, [Anatoly YakAovenko](https://www.linkedin.com/in/anatoly-yakovenko?ref=blog.arcium.com), [co-founder of So](https://www.linkedin.com/in/anatoly-yakovenko?ref=blog.arcium.com)[lana](https://solana.com/?ref=blog.arcium.com), [Lucas Bruder](https://www.linkedin.com/in/lucasbruder?ref=blog.arcium.com), [co-founder](https://www.linkedin.com/in/lucasbruder?ref=blog.arcium.com) of Jito amongst others
+
+### Roadmap
+
+- Arcium is currently on phase 1 of its [roadmap](https://arcium.com/road-to-mainnet), incentivizing a closed cohort of builders to set the first foundations of the Arcium Network. This opportunity is currently [open](https://testnet-signup.arcium.com/) for application.
+- In phase 2 - Arc1, Arcium plans to make its testnet available to the public - which will initialize the first wave of users to the Arcium ecosystem. Arcium also plans to bootstrap the first validator set and introduce the first applications, powered by the Arcium Network in this phase.
+- Arcium's phase 3 (Arc 2) plans to focus on the Network's staking mechanism, allowing users to delegate stake. This phase will also launch the first round of pilot applications targeting traditional industries like healthcare, research, and finance.
+- In phase 4 (tagged Arc 3) will mark the last phase before Mainnet launch, consolidating all the previous phases into one. In addition, Arcium promises to host a confidential computing hackathon to find promising applications which would launch with them (exciting!)
+
+### Contribution
+
+Arcium Network currently opens up exciting opportunities to contribute; by Running a Node, Building and Integrating applications with the Arcium Network, Engaging and Expanding, and Delegating stakes to secure the network while earning rewards.
+
+## Conclusion
+
+Arcium represents a groundbreaking advancement in confidential computing, seamlessly integrating blockchain technology with Multi-party eXecution Environments (MXE). This unique combination not only enhances security and privacy but also brings unparalleled flexibility and efficiency to various industries. From AI and DeFi to DePIN and real estate property management, Arcium's chain-agnostic approach and decentralized architecture address critical challenges such as data privacy, interoperability, and scalability.
+
+## Resources
+
+[https://arcium.com/](https://arcium.com/)
+
+[https://arcium.com/what-is-arcium](https://arcium.com/what-is-arcium)
+
+[https://arcium.com/road-to-mainnet](https://arcium.com/road-to-mainnet)
+
+[https://docs.arcium.com/staking/overview](https://docs.arcium.com/staking/overview)
+
+[https://blog.arcium.com/](https://blog.arcium.com/)
+
+[https://x.com/ArciumHQ/](https://x.com/ArciumHQ/)
+
+[https://www.researchgate.net/publication/370465870_Confidential_computing_and_related_technologies_a_critical_review](https://www.researchgate.net/publication/370465870_Confidential_computing_and_related_technologies_a_critical_review)
+
+[https://www.researchgate.net/publication/372801790_Confidential_Computing](https://www.researchgate.net/publication/372801790_Confidential_Computing)
+
+[https://www.ibm.com/topics/confidential-computing](https://www.ibm.com/topics/confidential-computing)
+
+[https://www.fortinet.com/resources/cyberglossary/confidential-computing](https://www.fortinet.com/resources/cyberglossary/confidential-computing)
+
+[https://ledidi.com/blog/confidential-computing-the-missing-link-in-cloud-data-protection](https://ledidi.com/blog/confidential-computing-the-missing-link-in-cloud-data-protection)

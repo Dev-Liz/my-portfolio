@@ -20,7 +20,7 @@ export function NavBar() {
         <div className="flex justify-between items-center">
           <Link href="/">
             <Image
-              src="portfolio-logo.svg"
+              src="/portfolio-logo.svg"
               alt="logo"
               width={150}
               height={120}

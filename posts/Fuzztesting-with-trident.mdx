@@ -1,0 +1,481 @@
+---
+title: Fuzz Testing Solana Anchor Programs With Trident - A Quickstart Guide
+excerpt: At the core of every software project are essential testing methods like Unit testing, Integration testing, System testing, and Acceptance testing. These ensure that the software functions correctly, and fulfills the system requirements.
+date: 2025-01-08
+author: "Elizabeth Bassey"
+image: "/article5/article5-cover.jpg"
+category: "Web 3"
+---
+
+# Fuzz Testing Solana Anchor Programs With Trident - A Quickstart Guide
+
+# Introduction
+
+At the core of every software project are essential testing methods like Unit testing, Integration testing, System testing, and Acceptance testing. These ensure that the software functions correctly, and fulfills the system requirements. However, these methods do not guarantee security. They miss hidden security flaws, leaving parts of the system vulnerable to attacks. Security testing while necessary, can be complex, expensive, and time-consuming. This explains why many projects skip thorough security audits for faster product launches. Fuzz testing is a simple yet effective software testing method, that adds an extra layer of security to your projects.
+
+This article will introduce Trident, a Rust-based framework for fuzz-testing Solana programs, written in [Anchor](https://www.anchor-lang.com/). You will learn how Trident works, its core features, and how you can fuzz-test your Anchor programs with it.
+
+_This guide will be divided into two parts; a background knowledge of Trident and a practical application of Trident fuzz testing. You can use the article outline to skip to any section of your choice._
+
+# What is Fuzz Testing?
+
+![Fuzz testing illustration](/article5/article5-image1.jpg)
+
+Fuzz Testing or ‘Fuzzing’ is an automated software testing method designed to reveal hidden vulnerabilities or defects in a software program by feeding the program with invalid inputs, forcing the system to crash or respond in an unexpected way.
+
+## Why Fuzz Testing?
+
+In 2014, a severe vulnerability was discovered in [OpenSSL](https://www.openssl.org/) library, a widely used protocol that provides communication, security, and privacy over the internet for applications such as the web, email, and virtual private networks (VPN). This vulnerability, known as the [Heartbleed Bug](https://heartbleed.com/), happened to be the [most consequential](https://www.researchgate.net/publication/284575562_The_Matter_of_Heartbleed) since the advent of the commercial internet. It posted a risk to millions of web users, allowing attackers to remotely read data from estimated 24%-55% of secure web servers. The vulnerability was discovered independently by two teams, one from Google Security and the other from Codenomicon, a Finnish Security company (now [Synopsis](https://www.synopsys.com/glossary/what-is-fuzz-testing.html#:~:text=Definition,as%20crashes%20or%20information%20leakage.)).
+
+The team at Codenomicon used a Fuzz testing method to probe OpenSSL. This technique allowed them to consistently provide invalid or random data to the inputs of the program with the intent to see if the program would fail or behave in an unexpected way. The team simulated various inputs, looking for unexpected behaviours untill the vulnerabilities were discovered. The system could potentially return sensitive data like private keys and passwords, putting millions of OpenSSL’s service users at risk. On April 8, 2014, the [Heartbleed Bug](https://heartbleed.com/) was publicly announced with a patched version of [OpenSSL](https://www.openssl.org/).
+
+This event proved fuzz testing to be a powerful technique for identifying vulnerabilities.
+
+## Benefits of Fuzz Testing
+
+- **Most likely to find bugs missed by other tests**
+  While other test methods are used to ensure there are no bugs in your program, Fuzzing demonstrates the presence of bugs, so you can fix them before pushing your codes to production. Giving an extra level of security and robustness to your program.
+- **Does not require lots of maintenance**
+  Fuzz Testing once written, can be reused many times in different programs
+- **It is scalable**
+  Fuzz testing is easy to scale. In the case of enterprise-level programs, you can use multiple machines to Fuzz test with different inputs
+
+## Challenges of Traditional Fuzz Testing Methods
+
+Common fuzz testing methods though effective, have several challenges:
+
+1. Complicated Environment Setup: some common fuzz testing methods require setting up the project from scratch and oftentimes, setting up these environments which include installing dependencies, can be very complicated.
+2. Creating the fuzz test from scratch: writing a fuzz test program from scratch can be daunting and time-consuming.
+
+# Introducing Trident
+
+![Introducing Trident](/article5/article5-image2.jpg)
+
+Trident is a Rust-based framework for carrying out fuzz and integration tests in Solana programs. It is open-source and supports programs written in Anchor.
+
+Developed by [Ackee Blockchain Security in 2021,](https://ackee.xyz/blog/introducing-trident-the-first-open-source-fuzzer-for-solana-programs/) Trident was first introduced as **Trdelník**. [Won the Marinade Finance community prize](https://build.superteam.fun/past-hackathon-winners/Infrastructure) for [Solana](https://ackee.xyz/blog/glossary/solana/) [Riptid](https://ackee.xyz/blog/glossary/solana/)e Hackathon in 2022, and received a development grant from the [Solana](https://ackee.xyz/blog/introducing-trident-the-first-open-source-fuzzer-for-solana-programs/) [Foundation in 2023.](https://ackee.xyz/blog/introducing-trident-the-first-open-source-fuzzer-for-solana-programs/)
+
+## What Makes Trident Outstanding?
+
+Below are some key features that make Trident different from other Fuzz testing methods:
+
+- **Trident leverages the robustness of Rust programming language**, making it secure and safe for your test cases.
+- **Supports Solana Anchor programs:** Trident abstracts away the complexities of having to write core Rust codes, making it easy for even beginners to test their programs with Anchor.
+- **Automated Test Generation:** Unlike traditional fuzz test methods where you have to set up the test environment from Scratch, Trident creates an automated test environment, with ready-to-use fuzzing and integration test templates.
+- **Dynamic Data Generation:** Trident enhances the thoroughness of testing by using random instructions and random accounts to generate unpredictable test scenarios.
+- **Debugging environment:** Trident provides a Command Line Interface (CLI) to run and debug your fuzz tests.
+- **Based on Google’s Hongfuzz Library:** Trident leverages a popular fuzz test library developed by Google, to provide seamless test experience.
+
+# Fuzz Testing With Trident
+
+## How It Works (Trident Fuzz Testing Lifecycle)
+
+> **Prerequisite**
+>
+> This section requires that you have a basic understanding of the list below, to easily follow along.
+>
+> - [Solana programming model](https://www.helius.dev/blog/the-solana-programming-model-an-introduction-to-developing-on-solana)
+> - [Accounts and Instructions](https://www.helius.dev/blog/the-solana-programming-model-an-introduction-to-developing-on-solana#:~:text=Programs%20are%20executable%20accounts%20owned,separation%20of%20code%20and%20data.)
+> - [Rust](https://www.rust-lang.org/learn/get-started)
+> - [Anchor](https://www.anchor-lang.com/docs/hello-world)
+
+![How trident works](/article5/article5-image3.jpg)
+
+_A flow diagram of how fuzz testing with Trident works_
+
+<div data-node-type="callout">
+  <div data-node-type="callout-emoji">💡</div>
+  <div data-node-type="callout-text">
+    ⚡&nbsp;symbol represents m
+    <em>andatory methods that must be implemented by the user. </em>👤 symbol
+    represents&nbsp;
+    <em>optional methods that can be implemented by the user.</em>
+  </div>
+</div>
+
+### Dissecting the flow diagram
+
+> 1. From the top of the diagram, the fuzzer starts iterating from zero.
+> 2. Checks to see if the number of iteration `maximum_iterations` is set, and stops if:
+>    - The number of iterations is reached.
+>    - If a crash occurred and a condition was set to `exit_upon_crash`
+>    - If a user interrupted/stopped the test manually (For example, by pressing **cmd/ctrl C**
+> 3. Else, the Fuzzer continues to the **Generate Instructions** Block, and for everytime the Fuzzer iterates:
+>    - It generates a sequence of instructions to execute. The user can customize how the instructions are generated by specifying:
+>      1. Which instructions should be executed at the beginning (`pre_ixs`)
+>      2. In the middle (`ixs`)
+>      3. And at the end of the iteration (`post_ixs`)
+>
+>         (This is useful if you want to fuzz some specific program state).
+>
+>    - In the second part of the flow diagram), the Fuzzer iterates through the instructions generated from the previous step, in the order in which they were specified.
+>      **For each iteration:**
+>      - A mandatory `get_account()` method is called to collect necessary instruction accounts. This method has to be specified by the user.
+>      - Next, a mandatory `get_data()` method is called to collect instruction data. This also has to be specified by the user.
+>      - Once that is done, Trident saves a snapshot of all the instruction accounts before the instruction execution.
+>      - The instruction is invoked and executed (only moves to the next step if the instruction executes successfully).
+>      - A snapshot of all the instruction accounts after the instruction execution is saved.
+>
+> 4. Finally, the optional `check_method()` is executed to check accounts data, and evaluate user defined variants.
+>    - If the check passes, the loop goes back to 3 and continues to iterate through the instructions.
+>    - If a crash is detected, all input data generated by the fuzzer are saved to a crash file, that can be used to debug the program later.
+
+## Fuzz Testing an Anchor Program
+
+### Installation
+
+To run a successful fuzz test with Trident, you should install the following:
+
+[Install Solana](https://docs.solanalabs.com/cli/install)
+
+[Install Rust](https://www.rust-lang.org/tools/install)
+
+[Install Anchor](https://www.anchor-lang.com/docs/installation)
+
+[Install Honggfuzz](https://github.com/google/honggfuzz)
+
+### Getting Started
+
+We're going to set up a new Anchor project called **my-trident-fuzz-test.** To initialize this, **run:**
+
+```plaintext
+anchor init my-trident-fuzz-test
+```
+
+Navigate into the project folder
+
+```plaintext
+cd my-trident-fuzz-test
+```
+
+In the root of your new Anchor project, install Trident CLI
+
+```plaintext
+cargo install trident-cli
+```
+
+If you haven't already, install Honggfuzz
+
+```plaintext
+cargo install honggfuzz
+```
+
+Compile the program to ensure everything works correctly
+
+```plaintext
+anchor build
+```
+
+_You should have a simple anchor program with all the necessary files in your IDE._
+
+### Writing an Anchor program to test
+
+Now let's create a simple program with intentional bugs, which we will test with our fuzzer later.
+
+In **my-trident-fuzz-test/src** folder, create a new file named `unchecked_arithmetic_0` and paste in the program below.
+
+```rust
+use anchor_lang::prelude::*;
+
+const MAGIC_NUMBER: u8 = 254;
+
+declare_id!("...."); // paste your program ID here
+
+#[program]
+pub mod unchecked_arithmetic_0 {
+	use super::*;
+
+	pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+    	let counter = &mut ctx.accounts.counter;
+
+    	counter.count = 0;
+    	counter.authority = ctx.accounts.user.key();
+
+    	Ok(())
+	}
+
+	pub fn update(ctx: Context<Update>, input1: u8, input2: u8) -> Result<()> {
+    	let counter = &mut ctx.accounts.counter;
+
+    	msg!("input1 = {}, input2 = {}", input1, input2);
+
+    	counter.count = buggy_math_function(input1, input2).into();
+    	Ok(())
+	}
+}
+pub fn buggy_math_function(input1: u8, input2: u8) -> u8 {
+	// INFO uncommenting the if statement can prevent
+	// div-by-zero and subtract with overflow panic
+	// if input2 >= MAGIC_NUMBER {
+	// 	return 0;
+	// }
+	let divisor = MAGIC_NUMBER - input2;
+	input1 / divisor
+}
+
+#[derive(Accounts)]
+pub struct Initialize<'info> {
+	#[account(init, payer = user, space = 8 + 40)]
+	pub counter: Account<'info, Counter>,
+
+	#[account(mut)]
+	pub user: Signer<'info>,
+
+	pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct Update<'info> {
+	#[account(mut, has_one = authority)]
+	pub counter: Account<'info, Counter>,
+	pub authority: Signer<'info>,
+}
+
+#[account]
+pub struct Counter {
+	pub authority: Pubkey,
+	pub count: u64,
+}
+```
+
+This is a simple program with two instructions: `Initialize` and `Update.`
+
+- The initialize instruction creates the necessary data account
+- The update instruction updates the on-chain data
+- The program also contains an intentional bug that will cause the program to crash if input 2 is greater than or equal to `MAGIC_NUMBER`
+
+_Again run_ `anchor build` _to verify that your program runs correctly_
+
+### Writing a Fuzz Test
+
+Now let's initialize Trident
+
+```plaintext
+Trident init
+```
+
+_This command generates new dependencies and templates in_ **trident-tests/fuzz_tests/fuzz_0**/ folder _that will be used to write our fuzz test._
+
+<div data-node-type="callout">
+  <div data-node-type="callout-emoji">💡</div>
+  <div data-node-type="callout-text">
+    You can run <code>trident help</code> to see other trident commands
+    available to you. You can also specify what kind of test you want to
+    initialize by running <code>trident init [test type]</code> this is because
+    trident can also be used to run other test types like{" "}
+    <strong>integration </strong>and <strong>proof of concept.</strong>
+  </div>
+</div>
+
+**Now let's write a simple fuzz test**
+
+\_One of the templates generated by Trident is the ‘trident-tests/fuzz_tests/fuzz_0/fuzz\__[\_instructions.rs_](http://instructions.rs)_’ file. This template contains an enumeration of our program instructions* `Initialize` \_and* `Update`_, with their respective structs and data._
+
+Now we have to update it with our mandatory `get_data()` and `get_account()` methods for each Instruction.
+
+```rust
+pub mod unchecked_arithmetic_0_fuzz_instructions {
+	use crate::accounts_snapshots::*;
+	use trident_client::{fuzzing::*, solana_sdk::native_token::LAMPORTS_PER_SOL};
+	#[derive(Arbitrary, DisplayIx, FuzzTestExecutor, FuzzDeserialize)]
+	pub enum FuzzInstruction {
+    	Initialize(Initialize),
+    	Update(Update),
+	}
+	#[derive(Arbitrary, Debug)]
+	pub struct Initialize {
+    	pub accounts: InitializeAccounts,
+    	pub data: InitializeData,
+	}
+	#[derive(Arbitrary, Debug)]
+	pub struct InitializeAccounts {
+    	pub counter: AccountId,
+    	pub user: AccountId,
+    	pub system_program: AccountId,
+	}
+	#[derive(Arbitrary, Debug)]
+	pub struct InitializeData {}
+	#[derive(Arbitrary, Debug)]
+	pub struct Update {
+    	pub accounts: UpdateAccounts,
+    	pub data: UpdateData,
+	}
+	#[derive(Arbitrary, Debug)]
+	pub struct UpdateAccounts {
+    	pub counter: AccountId,
+    	pub authority: AccountId,
+	}
+	#[derive(Arbitrary, Debug)]
+	pub struct UpdateData {
+    	pub input1: u8,
+    	pub input2: u8,
+	}
+	impl<'info> IxOps<'info> for Initialize {
+    	type IxData = unchecked_arithmetic_0::instruction::Initialize;
+    	type IxAccounts = FuzzAccounts;
+    	type IxSnapshot = InitializeSnapshot<'info>;
+    	fn get_data(
+        	&self,
+        	_client: &mut impl FuzzClient,
+        	_fuzz_accounts: &mut FuzzAccounts,
+    	) -> Result<Self::IxData, FuzzingError> {
+        	let data = unchecked_arithmetic_0::instruction::Initialize {};
+        	Ok(data)
+    	}
+    	fn get_accounts(
+        	&self,
+        	client: &mut impl FuzzClient,
+        	fuzz_accounts: &mut FuzzAccounts,
+    	) -> Result<(Vec<Keypair>, Vec<AccountMeta>), FuzzingError> {
+        	let user = fuzz_accounts.user.get_or_create_account(
+            	self.accounts.user,
+            	client,
+            	5 * LAMPORTS_PER_SOL,
+        	);
+        	let counter = fuzz_accounts.counter.get_or_create_account(
+            	self.accounts.counter,
+            	client,
+            	5 * LAMPORTS_PER_SOL,
+        	);
+
+        	let acc_meta = unchecked_arithmetic_0::accounts::Initialize {
+            	counter: counter.pubkey(),
+            	user: user.pubkey(),
+            	system_program: SYSTEM_PROGRAM_ID,
+        	}
+        	.to_account_metas(None);
+        	Ok((vec![user, counter], acc_meta))
+    	}
+	}
+	impl<'info> IxOps<'info> for Update {
+    	type IxData = unchecked_arithmetic_0::instruction::Update;
+    	type IxAccounts = FuzzAccounts;
+    	type IxSnapshot = UpdateSnapshot<'info>;
+    	fn get_data(
+        	&self,
+        	_client: &mut impl FuzzClient,
+        	_fuzz_accounts: &mut FuzzAccounts,
+    	) -> Result<Self::IxData, FuzzingError> {
+        	let data = unchecked_arithmetic_0::instruction::Update {
+            	input1: self.data.input1,
+            	input2: self.data.input2,
+        	};
+        	Ok(data)
+    	}
+    	fn get_accounts(
+        	&self,
+        	client: &mut impl FuzzClient,
+        	fuzz_accounts: &mut FuzzAccounts,
+    	) -> Result<(Vec<Keypair>, Vec<AccountMeta>), FuzzingError> {
+        	let user = fuzz_accounts.user.get_or_create_account(
+            	self.accounts.authority,
+            	client,
+            	15 * LAMPORTS_PER_SOL,
+        	);
+        	let counter = fuzz_accounts.counter.get_or_create_account(
+            	self.accounts.counter,
+            	client,
+            	5 * LAMPORTS_PER_SOL,
+        	);
+
+        	let acc_meta = unchecked_arithmetic_0::accounts::Update {
+            	counter: counter.pubkey(),
+            	authority: user.pubkey(),
+        	}
+        	.to_account_metas(None);
+        	Ok((vec![user], acc_meta))
+    	}
+	}
+	#[doc = r" Use AccountsStorage<T> where T can be one of:"]
+	#[doc = r" Keypair, PdaStore, TokenStore, MintStore, ProgramStore"]
+	#[derive(Default)]
+	pub struct FuzzAccounts {
+    	// The 'authority' and 'system_program' were automatically
+    	// generated in the FuzzAccounts struct, as they are both
+    	// used in the program. However, the 'authority' is in fact
+    	// the user account, just named differently. Therefore, we will use only
+    	// the generated user accounts for both 'user' and 'authority account' fields
+    	// in this fuzz test. Additionally, there is no need to fuzz the 'system_program' account.
+    	user: AccountsStorage<Keypair>,
+    	counter: AccountsStorage<Keypair>,
+	}
+}
+```
+
+Finally, we'll modify the fuzz test template located at ‘trident-tests/fuzz_tests/fuzz_0/test\_[fuzz.rs](http://fuzz.rs)’ with the code below:
+
+```rust
+use fuzz_instructions::unchecked_arithmetic_0_fuzz_instructions::FuzzInstruction;
+use fuzz_instructions::unchecked_arithmetic_0_fuzz_instructions::Initialize;
+use trident_client::{convert_entry, fuzz_trident, fuzzing::*};
+use unchecked_arithmetic_0::entry;
+use unchecked_arithmetic_0::ID as PROGRAM_ID;
+mod accounts_snapshots;
+mod fuzz_instructions;
+
+const PROGRAM_NAME: &str = "unchecked_arithmetic_0";
+
+struct MyFuzzData;
+
+impl FuzzDataBuilder<FuzzInstruction> for MyFuzzData {
+	fn pre_ixs(u: &mut arbitrary::Unstructured) -> arbitrary::Result<Vec<FuzzInstruction>> {
+    	let init = FuzzInstruction::Initialize(Initialize::arbitrary(u)?);
+    	Ok(vec![init])
+	}
+}
+
+fn main() {
+	loop {
+    	fuzz_trident!(fuzz_ix: FuzzInstruction, |fuzz_data: MyFuzzData| {
+        	let mut client =
+            	ProgramTestClientBlocking::new(PROGRAM_NAME, PROGRAM_ID, processor!(convert_entry!(entry)))
+                	.unwrap();
+        	let _ = fuzz_data.run_with_runtime(PROGRAM_ID, &mut client);
+    	});
+	}
+}
+```
+
+This program defines **Initialize** instruction as the pre-instruction, causing the fuzz to loop through the **Initialize** instruction with random data.
+
+### Running a Fuzz Test
+
+Now we can run the Fuzz test with the command below:
+
+```rust
+trident fuzz run fuzz_0
+```
+
+The program takes some time to build, then the fuzzing begins. Depending on the number of iterations defined in the program, the fuzzing might take some time to complete. Once completed, It returns a statistic with the number of iterations, unique crash found, the target file it found it, and other necessary information.
+
+This enables you to find where the bug occurred so you can fix it.
+
+![Running a fuzz test](/article5/article5-image4.jpg)
+
+### Debugging
+
+To find exactly where the crash occurred and what caused the crash, you use the command:
+
+```rust
+trident fuzz run-debug fuzz_0 <CRASH_FILE_NAME>
+```
+
+_CRASH_FILE_NAME is the file where the crash occurred while fuzzing._
+
+# Conclusion
+
+In this guide, you learned about Fuzz testing and its importance in your software programs. You also learned how to easily implement fuzz tests in your Anchor program to increase robustness, using Trident fuzzing framework.
+
+Now I'm sure you'd like to fuzz-test your next Solana project. Head over to [Trident Documentation](https://ackee.xyz/trident/docs/dev/) to learn how to do more with Trident.
+
+# Resources
+
+- [Ackee Website](https://ackee.xyz/)
+- [Trident Documentation](https://ackee.xyz/trident/docs/dev/)
+- [Trident youtube guide](https://www.youtube.com/watch?v=5Lq8iEbMFbs)
+- [Ackee Blog](https://ackee.xyz/blog/introducing-trident-the-first-open-source-fuzzer-for-solana-programs/)
+- [Helius dev blog](https://www.helius.dev/blog/the-solana-programming-model-an-introduction-to-developing-on-solana)
+- [Synopsys Blog](https://www.synopsys.com/glossary/what-is-fuzz-testing.html)
+- [Heartbleed Bug](https://heartbleed.com/)
+- [Research Gate](https://www.researchgate.net/publication/343646768_Fuzzing_Challenges_and_Reflections)
+- [Anchor documentation](https://www.anchor-lang.com/docs/installation)
