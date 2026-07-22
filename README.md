@@ -42,7 +42,7 @@ This project follows the next.js app route structure.
   - posts/ - All blog posts in mdx files
   - public/ - public files and images
 
-## View
+## View Project
 
 To view the project locally on your computer, please fork this repository to your own account then clone into your computer.
 

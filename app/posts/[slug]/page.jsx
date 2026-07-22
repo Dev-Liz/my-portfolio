@@ -32,7 +32,7 @@ export default async function Page({ params }) {
           <FiChevronLeft />
         </button>
       </Link>
-      <div className="my-20 px-2 mx-auto prose prose-headings:text-slate-400 prose-p:text-slate-300">
+      <div className="my-20 px-2 mx-auto prose prose-custom">
         <MDXRemote source={content} />
       </div>
     </div>
