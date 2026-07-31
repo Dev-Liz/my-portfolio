@@ -2,6 +2,7 @@ import { FiGithub, FiLinkedin, FiDribbble, FiMail } from "react-icons/fi";
 import {} from "react-icons/fi";
 import { RiTwitterXLine } from "react-icons/ri";
 import project1 from "../assets/project-1.png";
+import project2 from "../assets/project-2.png";
 import tailwind from "../assets/portfolio-tools/tailwind.png";
 import js from "../assets/portfolio-tools/javascript.png";
 import react from "../assets/portfolio-tools/react.png";
@@ -69,8 +70,15 @@ export const projects = [
     image: project1,
     title: "Kyverno website and documentation",
     description:
-      "I redesigned the kyverno website and implementd with Astro and Javascript.jsv",
+      "A redesign of the kyverno website and documentation using Astro.js.",
     tools: ["Astro.js", " JavaScript", "Tailwind"],
+  },
+  {
+    image: project2,
+    title: "Browser Extentions Manager ui",
+    description:
+      "A responsive browser extensions manager app built with React, Javascript and Tailwind. Featuring filters, toggle-switch, darkmode and modal dialog.",
+    tools: ["React", " JavaScript", "Tailwind"],
   },
 ];
 

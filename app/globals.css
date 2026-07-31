@@ -56,7 +56,7 @@
   --tw-prose-invert-links: var(--color-primary);
   --tw-prose-invert-bold: var(--color-cneutral-500);
   --tw-prose-invert-counters: var(--color-primary);
-  --tw-prose-invert-bullets: var(-color-primary);
+  --tw-prose-invert-bullets: var(--color-primary);
   --tw-prose-invert-hr: var(--color-cneutral-300);
   --tw-prose-invert-quotes: var(--color-cneutral-400);
   --tw-prose-invert-quote-borders: var(--color-cneutral-300);
