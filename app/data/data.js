@@ -2,7 +2,7 @@ import { FiGithub, FiLinkedin, FiDribbble, FiMail } from "react-icons/fi";
 import {} from "react-icons/fi";
 import { RiTwitterXLine } from "react-icons/ri";
 import project1 from "../assets/project-1.png";
-import project2 from "../assets/project-2.png";
+import project2 from "../assets/project-2.jpg";
 import tailwind from "../assets/portfolio-tools/tailwind.png";
 import js from "../assets/portfolio-tools/javascript.png";
 import react from "../assets/portfolio-tools/react.png";
@@ -70,8 +70,9 @@ export const projects = [
     image: project1,
     title: "Kyverno website and documentation",
     description:
-      "A redesign of the kyverno website and documentation using Astro.js.",
+      "A redesign of the kyverno website and documentation using Astro.js. featuring dark mode, blog, filters, responsive table, etc.",
     tools: ["Astro.js", " JavaScript", "Tailwind"],
+    link: "https://kyverno.io/",
   },
   {
     image: project2,
@@ -79,6 +80,7 @@ export const projects = [
     description:
       "A responsive browser extensions manager app built with React, Javascript and Tailwind. Featuring filters, toggle-switch, darkmode and modal dialog.",
     tools: ["React", " JavaScript", "Tailwind"],
+    link: "https://browser-extentions-managerr.vercel.app/",
   },
 ];
 

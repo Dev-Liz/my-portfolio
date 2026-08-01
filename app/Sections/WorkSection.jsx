@@ -34,7 +34,7 @@ const WorkSection = () => {
           </h2>
           <WorksFilter />
         </header>
-        <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-8 pt-8">
+        <div className="w-full flex flex-col justify-center md:flex-row md:items-stretch gap-8 pt-8">
           {projects.map((project, index) => (
             <ProjectCard
               image={project.image}
@@ -43,6 +43,7 @@ const WorkSection = () => {
               tools={project.tools}
               key={index}
               style={getItemStyle(index)}
+              link={project.link}
             />
           ))}
         </div>
