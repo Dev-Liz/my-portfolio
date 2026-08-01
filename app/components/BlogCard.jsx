@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Badge from "./Badge";
 
 export const BlogCard = ({ image, title, category, excerpt }) => {
   return (
@@ -13,13 +14,10 @@ export const BlogCard = ({ image, title, category, excerpt }) => {
       />
       <div className="flex flex-col space-y-4 py-4">
         <div className="flex justify-between items-center">
-          <h5 className="text-heading5 font-kanit font-bold">{title}</h5>
-          <p
-            className="flex items-center justify-center rounded-full py-1 
-          px-2 bg-primary/20 font-kumbhsans text-sm"
-          >
+          <h5 className="text-heading5 font-kanit font-bold w-4/5">{title}</h5>
+          <Badge variant="smallPrimary" className="w-1/5">
             {category}
-          </p>
+          </Badge>
         </div>
         <p className="font-kumbhsans text-body-18">{excerpt}</p>
       </div>

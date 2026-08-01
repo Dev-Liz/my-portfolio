@@ -44,6 +44,7 @@ const WorkSection = () => {
               key={index}
               style={getItemStyle(index)}
               link={project.link}
+              github={project.github}
             />
           ))}
         </div>

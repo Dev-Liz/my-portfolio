@@ -1,8 +1,8 @@
 import { FiGithub, FiLinkedin, FiDribbble, FiMail } from "react-icons/fi";
 import {} from "react-icons/fi";
 import { RiTwitterXLine } from "react-icons/ri";
-import project1 from "../assets/project-1.png";
-import project2 from "../assets/project-2.jpg";
+import project1 from "../assets/project-1.jpg";
+import project2 from "../assets/project-2.png";
 import tailwind from "../assets/portfolio-tools/tailwind.png";
 import js from "../assets/portfolio-tools/javascript.png";
 import react from "../assets/portfolio-tools/react.png";
@@ -68,19 +68,21 @@ export const worksFilter = ["All", "React", "Astro", "Javascript"];
 export const projects = [
   {
     image: project1,
-    title: "Kyverno website and documentation",
-    description:
-      "A redesign of the kyverno website and documentation using Astro.js. featuring dark mode, blog, filters, responsive table, etc.",
-    tools: ["Astro.js", " JavaScript", "Tailwind"],
-    link: "https://kyverno.io/",
-  },
-  {
-    image: project2,
     title: "Browser Extentions Manager ui",
     description:
       "A responsive browser extensions manager app built with React, Javascript and Tailwind. Featuring filters, toggle-switch, darkmode and modal dialog.",
     tools: ["React", " JavaScript", "Tailwind"],
     link: "https://browser-extentions-managerr.vercel.app/",
+    github: "https://github.com/Dev-Liz/Browser-extentions-manager-ui",
+  },
+  {
+    image: project2,
+    title: "Kyverno website and documentation",
+    description:
+      "A redesign of the kyverno website and documentation using Astro.js. featuring dark mode, blog, filters, responsive table, etc.",
+    tools: ["Astro.js", " JavaScript", "Tailwind"],
+    link: "https://kyverno.io/",
+    github: "https://github.com/Dev-Liz/test-kyverno-docs",
   },
 ];
 
