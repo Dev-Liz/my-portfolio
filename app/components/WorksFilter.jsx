@@ -1,18 +1,18 @@
-import { worksFilter } from "../data/data";
+import Badge from "./Badge";
 
-const WorksFilter = () => {
+const WorksFilter = ({ filter, setFilter }) => {
+  const filterStatus = ["All", "Frontend", "Documentation"];
   return (
-    <div
-      className="flex items-center justify-center space-x-6  w-full lg:w-[30%] 
-    lg:justify-between lg:space-x-0"
-    >
-      {worksFilter.map((filter) => (
-        <div
+    <div className="flex flex-col items-center justify-between space-y-3 md:flex-row md:space-y-0 md:space-x-3">
+      {filterStatus.map((status) => (
+        <Badge
           className="text-body-20 font-kumbhsans font-medium hover:text-primary"
-          key={filter}
+          key={status}
+          onClick={() => setFilter(status)}
+          variant={filter === status ? "primary" : "secondary"}
         >
-          {filter}
-        </div>
+          {status}
+        </Badge>
       ))}
     </div>
   );

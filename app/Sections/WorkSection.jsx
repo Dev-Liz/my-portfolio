@@ -1,23 +1,20 @@
+"use client";
+
 import React from "react";
+import { useState } from "react";
+import { projects } from "../data/data.js";
 import WorksFilter from "../components/WorksFilter";
 import ProjectCard from "../components/ProjectCard";
-import { projects } from "../data/data";
 
 const WorkSection = () => {
-  const getItemStyle = (index) => {
-    switch (index) {
-      case 0:
-        return "lg:col-span-2 lg:row-span-1"; // Spans 2 columns, 2 rows
-      case 1:
-        return "lg:col-span-2 lg:row-span-2"; // Standard 1x1
-      case 2:
-        return "lg:col-span-2 lg:row-span-2"; // Standard 1x1
-      case 3:
-        return "lg:col-span-2 lg:row-span-1"; // Spans 2 columns, 1 row
-      default:
-        return "lg:col-span-1 lg:row-span-1";
-    }
-  };
+  const [cards, setCards] = useState(projects);
+  const [filter, setFilter] = useState("All");
+
+  const filteredCards = cards.filter((card) => {
+    if (filter === "Frontend") return card.isFrontend;
+    if (filter === "Documentation") return !card.isFrontend;
+    return true;
+  });
 
   return (
     <section
@@ -32,21 +29,25 @@ const WorkSection = () => {
           <h2 className="text-heading4 md:text-heading3 text-center lg:text-left font-kanit font-medium">
             View my works
           </h2>
-          <WorksFilter />
+          <WorksFilter filter={filter} setFilter={setFilter} />
         </header>
-        <div className="w-full flex flex-col justify-center md:flex-row md:items-stretch gap-8 pt-8">
-          {projects.map((project, index) => (
-            <ProjectCard
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              tools={project.tools}
-              key={index}
-              style={getItemStyle(index)}
-              link={project.link}
-              github={project.github}
-            />
-          ))}
+        <div className="w-full grid grid-col md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
+          {filteredCards.length > 0 ? (
+            filteredCards.map((card, index) => (
+              <ProjectCard
+                image={card.image}
+                title={card.title}
+                description={card.description}
+                tools={card.tools}
+                key={index}
+                link={card.link}
+                github={card.github}
+                isFrontend={card.isFrontend}
+              />
+            ))
+          ) : (
+            <p>No cards match the selected filter</p>
+          )}
         </div>
       </div>
     </section>

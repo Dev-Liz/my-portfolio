@@ -1,8 +1,14 @@
 import { FiGithub, FiLinkedin, FiDribbble, FiMail } from "react-icons/fi";
 import {} from "react-icons/fi";
 import { RiTwitterXLine } from "react-icons/ri";
-import project1 from "../assets/project-1.jpg";
-import project2 from "../assets/project-2.png";
+import project1 from "../assets/portfolio-projects/project-1.png";
+import project2 from "../assets/portfolio-projects/project-2.jpg";
+import project3 from "../assets/portfolio-projects/project-3.jpg";
+import project4 from "../assets/portfolio-projects/project-4.jpg";
+import project5 from "../assets/portfolio-projects/project-5.jpg";
+import project6 from "../assets/portfolio-projects/project-6.jpg";
+import project7 from "../assets/portfolio-projects/project-7.jpg";
+import project8 from "../assets/portfolio-projects/project-8.jpg";
 import tailwind from "../assets/portfolio-tools/tailwind.png";
 import js from "../assets/portfolio-tools/javascript.png";
 import react from "../assets/portfolio-tools/react.png";
@@ -71,6 +77,7 @@ export const projects = [
     title: "Browser Extentions Manager ui",
     description:
       "A responsive browser extensions manager app built with React, Javascript and Tailwind. Featuring filters, toggle-switch, darkmode and modal dialog.",
+    isFrontend: true,
     tools: ["React", " JavaScript", "Tailwind"],
     link: "https://browser-extentions-managerr.vercel.app/",
     github: "https://github.com/Dev-Liz/Browser-extentions-manager-ui",
@@ -80,9 +87,60 @@ export const projects = [
     title: "Kyverno website and documentation",
     description:
       "A redesign of the kyverno website and documentation using Astro.js. featuring dark mode, blog, filters, responsive table, etc.",
+    isFrontend: true,
     tools: ["Astro.js", " JavaScript", "Tailwind"],
     link: "https://kyverno.io/",
     github: "https://github.com/Dev-Liz/test-kyverno-docs",
+  },
+  {
+    image: project3,
+    title: "TMDB API Docs",
+    description:
+      "A revamp of The movie database (TMDB) open-source documentation, using mintlify and OpenAPI spec.",
+    isFrontend: false,
+    tools: ["Mintlify", "React", "OpenAPI spec"],
+    link: "https://devliz.mintlify.app/introduction",
+  },
+  {
+    image: project4,
+    title: "Neubird AI Documentation",
+    description:
+      "An AI product documentation built with Astro, astro components, storylane for interactive content.",
+    isFrontend: false,
+    tools: ["Astro.js", "Storylane", "Annotely"],
+    link: "https://docs.neubird.ai/",
+  },
+  {
+    image: project5,
+    title: "OpenmindAI Documentation",
+    description: "An AI product documentation built with Mintlify.",
+    isFrontend: false,
+    tools: ["Mintlify"],
+    link: "https://docs.openmind.com/",
+  },
+  {
+    image: project6,
+    title: "Openmadness Documentation",
+    description: "A Mathemical tool documentation built with Vuepress",
+    isFrontend: false,
+    tools: ["Vuepress"],
+    link: "https://docs.openmind.com/",
+  },
+  {
+    image: project7,
+    title: "Twilio Documentation",
+    description: "A revamp of the Twilio documentation using Readme.io",
+    isFrontend: false,
+    tools: ["Astro.js", " JavaScript", "Tailwind"],
+    link: "https://kyverno.io/",
+  },
+  {
+    image: project8,
+    title: "Plaid Documentation",
+    description: "A revamp of the plaid documentation using Readme.io",
+    isFrontend: false,
+    tools: ["Postman"],
+    link: "https://documenter.getpostman.com/view/37667361/2sAYBUCs2C",
   },
 ];
 
