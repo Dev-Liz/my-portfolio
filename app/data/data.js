@@ -74,7 +74,7 @@ export const worksFilter = ["All", "React", "Astro", "Javascript"];
 export const projects = [
   {
     image: project1,
-    title: "Browser Extentions Manager ui",
+    title: "Browser Extentions Manager ui with React",
     description:
       "A responsive browser extensions manager app built with React, Javascript and Tailwind. Featuring filters, toggle-switch, darkmode and modal dialog.",
     isFrontend: true,
@@ -84,7 +84,7 @@ export const projects = [
   },
   {
     image: project2,
-    title: "Kyverno website and documentation",
+    title: "Kyverno website and documentation with Astro.js",
     description:
       "A redesign of the kyverno website and documentation using Astro.js. featuring dark mode, blog, filters, responsive table, etc.",
     isFrontend: true,
@@ -94,7 +94,7 @@ export const projects = [
   },
   {
     image: project3,
-    title: "TMDB API Docs",
+    title: "TMDB API Documentation with Mintlify",
     description:
       "A revamp of The movie database (TMDB) open-source documentation, using mintlify and OpenAPI spec.",
     isFrontend: false,
@@ -103,7 +103,7 @@ export const projects = [
   },
   {
     image: project4,
-    title: "Neubird AI Documentation",
+    title: "Neubird AI Documentation with Astro",
     description:
       "An AI product documentation built with Astro, astro components, storylane for interactive content.",
     isFrontend: false,
@@ -112,31 +112,31 @@ export const projects = [
   },
   {
     image: project5,
-    title: "OpenmindAI Documentation",
+    title: "OpenmindAI Documentation with Mintlify",
     description: "An AI product documentation built with Mintlify.",
     isFrontend: false,
-    tools: ["Mintlify"],
+    tools: ["Mintlify", "Postman"],
     link: "https://docs.openmind.com/",
   },
   {
     image: project6,
-    title: "Openmadness Documentation",
+    title: "Openmadness Documentation with Vuepress",
     description: "A Mathemical tool documentation built with Vuepress",
     isFrontend: false,
     tools: ["Vuepress"],
-    link: "https://docs.openmind.com/",
+    link: "https://openmadness-docs.vercel.app/",
   },
   {
     image: project7,
-    title: "Twilio Documentation",
+    title: "Twilio Documentation with Readme.io",
     description: "A revamp of the Twilio documentation using Readme.io",
     isFrontend: false,
     tools: ["Astro.js", " JavaScript", "Tailwind"],
-    link: "https://kyverno.io/",
+    link: "https://twilio-api-docs-xnfl.readme.io/reference/getting-started-with-your-api",
   },
   {
     image: project8,
-    title: "Plaid Documentation",
+    title: "Plaid Documentation with Postman",
     description: "A revamp of the plaid documentation using Readme.io",
     isFrontend: false,
     tools: ["Postman"],

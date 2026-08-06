@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${kumbhsans.className} ${kanit.className}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.jpg" />
       </head>
       <body className="w-full min-h-full flex flex-col bg-cneutral-500 text-white-100">
         <NavBar />
