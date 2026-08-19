@@ -1,6 +1,7 @@
 import { FiGithub, FiLinkedin, FiDribbble, FiMail } from "react-icons/fi";
-import {} from "react-icons/fi";
+import { FaDev } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
+import { Hashnode } from "../components/Hashnode";
 import project1 from "../assets/portfolio-projects/project-1.png";
 import project2 from "../assets/portfolio-projects/project-2.jpg";
 import project3 from "../assets/portfolio-projects/project-3.jpg";
@@ -46,9 +47,14 @@ export const navItems = [
 
 export const socialLinks = [
   {
-    name: "x",
-    icon: RiTwitterXLine,
-    link: "https://x.com/dev_lizz",
+    name: "hashnode",
+    icon: Hashnode,
+    link: "https://devliz.hashnode.dev/",
+  },
+  {
+    name: "dev",
+    icon: FaDev,
+    link: "https://dev.to/devliz",
   },
   {
     name: "linkedin",
@@ -60,13 +66,18 @@ export const socialLinks = [
     icon: FiGithub,
     link: "https://github.com/dev-liz",
   },
+  {
+    name: "x",
+    icon: RiTwitterXLine,
+    link: "https://x.com/dev_lizz",
+  },
 ];
 
 export const profile = {
   greeting: "Hi There! I'm Liz👋",
-  title: "Frontend Engineer",
+  title: "Technical Writer & Frontend Developer",
   subtitle:
-    " I’m a UX-driven Frontend Engineer who helps SaaS and AI companies build intuitive, high-performing digital products.",
+    "With a solid background in UX Thinking, I create seamless guides and documentation as well as intuitive web experience for SAAS, AI and Developer Products.",
 };
 
 export const worksFilter = ["All", "React", "Astro", "Javascript"];

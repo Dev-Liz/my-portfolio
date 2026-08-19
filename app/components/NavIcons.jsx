@@ -4,7 +4,7 @@ export default function NavIcons({ icon, link }) {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="hover:text-primary cursor-pointer w-[5em]"
+      className="hover:text-primary cursor-pointer w-[7em]"
     >
       {icon}
     </a>

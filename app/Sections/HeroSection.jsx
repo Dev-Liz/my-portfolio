@@ -13,7 +13,7 @@ export const HeroSection = () => {
       className="bg-cneutral-500 w-full h-auto py-10 relative flex justify-center items-center"
     >
       <div
-        className="w-[10em] h-[10em] absolute bottom-[50%] left-[30%] md:bottom-30 md:left-[40%] bg-radial from-gprimary-100 via-gprimary-200 to-gprimary-300
+        className="w-[10em] h-[10em] absolute bottom-[50%] left-[30%] md:bottom-50 md:left-[40%] bg-radial from-gprimary-100 via-gprimary-200 to-gprimary-300
       blur-3xl rounded-full md:w-70 md:h-70"
       ></div>
       <main className="w-80% md:w-full">
@@ -51,7 +51,7 @@ export const HeroSection = () => {
               ))}
             </h1>
             <p
-              className="text-center text-body-16 md:text-body-20 text-white-100/70 font-kumbhsans 
+              className="text-center text-body-16 md:text-body-20 text-white-100 font-kumbhsans 
             z-10 lg:px-10 font-medium"
             >
               {profile.subtitle}

@@ -37,7 +37,7 @@ export function NavBar() {
               <NavItem item={item.text} link={item.link} key={item.text} />
             ))}
           </nav>
-          <div className="lg:flex items-center justify-between w-[10%] hidden">
+          <div className="lg:flex items-center justify-between w-[14%] hidden">
             {socialLinks.map((link) => (
               <NavIcons icon={<link.icon alt={link.name} />} key={link.name} />
             ))}
