@@ -39,7 +39,11 @@ export function NavBar() {
           </nav>
           <div className="lg:flex items-center justify-between w-[14%] hidden">
             {socialLinks.map((link) => (
-              <NavIcons icon={<link.icon alt={link.name} />} key={link.name} />
+              <NavIcons
+                icon={<link.icon alt={link.name} />}
+                key={link.name}
+                link={link.link}
+              />
             ))}
           </div>
           <div className="lg:hidden md:flex flex-col justify-end">
