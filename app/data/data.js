@@ -47,14 +47,14 @@ export const navItems = [
 
 export const socialLinks = [
   {
-    name: "hashnode",
-    icon: Hashnode,
-    link: "https://devliz.hashnode.dev/",
-  },
-  {
     name: "dev",
     icon: FaDev,
     link: "https://dev.to/devliz",
+  },
+  {
+    name: "hashnode",
+    icon: Hashnode,
+    link: "https://devliz.hashnode.dev/",
   },
   {
     name: "linkedin",
