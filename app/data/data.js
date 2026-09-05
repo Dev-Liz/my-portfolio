@@ -10,16 +10,15 @@ import project5 from "../assets/portfolio-projects/project-5.jpg";
 import project6 from "../assets/portfolio-projects/project-6.jpg";
 import project7 from "../assets/portfolio-projects/project-7.jpg";
 import project8 from "../assets/portfolio-projects/project-8.jpg";
-import tailwind from "../assets/portfolio-tools/tailwind.png";
-import js from "../assets/portfolio-tools/javascript.png";
-import react from "../assets/portfolio-tools/react.png";
-import nextjs from "../assets/portfolio-tools/next-js.png";
-import astro from "../assets/portfolio-tools/astro.png";
-import figma from "../assets/portfolio-tools/figma.png";
+import openapi from "../assets/portfolio-tools/openapi.png";
+import postman from "../assets/portfolio-tools/postman.png";
+import redocly from "../assets/portfolio-tools/redocly.png";
+import readme from "../assets/portfolio-tools/readme.png";
+import swagger from "../assets/portfolio-tools/swagger.png";
+import mintlify from "../assets/portfolio-tools/mintlify.png";
 import disc from "../assets/disc.svg";
 import csspost from "../assets/Portfolio-blog-images/css-variables.png";
 import reacthook from "../assets/Portfolio-blog-images/react-hooks.png";
-import postman from "../assets/Portfolio-blog-images/postman.png";
 import framerpost from "../assets/Portfolio-blog-images/framer.png";
 
 export const navItems = [
@@ -75,24 +74,14 @@ export const socialLinks = [
 
 export const profile = {
   greeting: "Hi There! I'm Liz👋",
-  title: "Technical Writer & Frontend Developer",
+  title: "API & DevTools Documentation Writer",
   subtitle:
-    "With a solid background in UX Thinking, I create seamless guides and documentation as well as intuitive web experience for SAAS, AI and Developer Products.",
+    "I'm a Technical Writer specialized in API and developer tools documentation. With a background in software engineering and user experience, I write accurate, clear and concise documentation Agents and Developers love.",
 };
 
 export const worksFilter = ["All", "React", "Astro", "Javascript"];
 
 export const projects = [
-  {
-    image: project1,
-    title: "Browser Extentions Manager ui with React",
-    description:
-      "A responsive browser extensions manager app built with React, Javascript and Tailwind. Featuring filters, toggle-switch, darkmode and modal dialog.",
-    isFrontend: true,
-    tools: ["React", " JavaScript", "Tailwind"],
-    link: "https://browser-extentions-managerr.vercel.app/",
-    github: "https://github.com/Dev-Liz/Browser-extentions-manager-ui",
-  },
   {
     image: project2,
     title: "Kyverno website and documentation with Astro.js",
@@ -153,38 +142,48 @@ export const projects = [
     tools: ["Postman"],
     link: "https://documenter.getpostman.com/view/37667361/2sAYBUCs2C",
   },
+  {
+    image: project1,
+    title: "Browser Extentions Manager ui with React",
+    description:
+      "A responsive browser extensions manager app built with React, Javascript and Tailwind. Featuring filters, toggle-switch, darkmode and modal dialog.",
+    isFrontend: true,
+    tools: ["React", " JavaScript", "Tailwind"],
+    link: "https://browser-extentions-managerr.vercel.app/",
+    github: "https://github.com/Dev-Liz/Browser-extentions-manager-ui",
+  },
 ];
 
 export const tools = [
   {
-    image: tailwind,
-    name: "Tailwind",
-    category: "Frontend",
+    image: openapi,
+    name: "OpenApi",
+    category: "API Documentation",
   },
   {
-    image: js,
-    name: "Javascript",
-    category: "Frontend",
+    image: postman,
+    name: "Postman",
+    category: "API Testing",
   },
   {
-    image: react,
-    name: "React",
-    category: "Frontend",
+    image: swagger,
+    name: "Swagger",
+    category: "API Testing",
   },
   {
-    image: nextjs,
-    name: "Next.js",
-    category: "Frontend",
+    image: redocly,
+    name: "Redocly",
+    category: "API Management",
   },
   {
-    image: astro,
-    name: "Astro",
-    category: "Frontend",
+    image: mintlify,
+    name: "Mintlify",
+    category: "API Documentation",
   },
   {
-    image: figma,
-    name: "Figma",
-    category: "Design",
+    image: readme,
+    name: "Readme.io",
+    category: "API Documentation",
   },
 ];
 
@@ -196,22 +195,16 @@ export const socials = [
     link: "https://github.com/dev-liz",
   },
   {
-    icon: RiTwitterXLine,
-    name: "X",
-    handle: "@dev_lizz",
-    link: "https://x.com/dev_lizz",
-  },
-  {
     icon: FiLinkedin,
     name: "Linkedin",
     handle: "@devliz",
     link: "https://www.linkedin.com/in/devliz/",
   },
   {
-    icon: FiDribbble,
-    name: "Dribbble",
-    handle: "@Liz-B",
-    link: "https://dribbble.com/Liz-B",
+    icon: RiTwitterXLine,
+    name: "X",
+    handle: "@dev_lizz",
+    link: "https://x.com/dev_lizz",
   },
   {
     icon: FiMail,
